@@ -31,18 +31,14 @@ The folder "CompressionHEP" contains jupyter notebooks for training, testing and
 * Script for generating normalized datasets with different normalization techniques: No norm, standard and custom normalization
 
 ***
-1a. Pre-trained_performance_fastai_AE_3D_200_no1cycle.ipynb*
-* Script for loading pretrained model from [HEPAutoencoders](https://github.com/Skelpdar/HEPAutoencoders) and testing on the given test-set.
- 
-***
-1b. 4D_3D_200_no_norm.ipynb
+1a. 4D_3D_200_no_norm.ipynb
 * Base model trained on non-normalized data
 
 ***
- 1c. 4D_3D_200_standard_norm.ipynb
+1b. 4D_3D_200_standard_norm.ipynb
    * Base model trained on standard-normalized data
 ***
-1d. 4D_3D_200_custom_norm.ipynb
+1c. 4D_3D_200_custom_norm.ipynb
   * Base model trained on custom-normalized data
 ***
 2a. 4D_3D_200_ReLU_BN_custom_norm.ipynb
@@ -83,23 +79,22 @@ The scripts Execution_time_calculation.ipynb and Memory_allocation_trace.ipynb c
   * Standard normalization has ~1e-2 error for all the parameters, whereas custom normalization has better performance for most of the parameters as compared to all 3. 
  
  #### Model comparison
- | Model         |     m    | p_t        | \phi       | \eta       | MSE on the test-set |
+| Model         |     m    | p_t        | \phi       | \eta       | MSE on the test-set |
 |---------------|:--------:|------------|------------|------------|---------------------|
-| Pre-trained   | 3440.2*  | -0.02757   | -0.0898497 | 0.13439687 | 0.1864              |
 | Tanh, no NN   | 0.010748 | -0.0001039 | 0.0007383  | 0.002638   | 0.0007314           |
 | LeakyReLU, BN | 0.004853 | -0.001126  | 0.008089   | -0.02475   | 0.0005750           |
 | ELU, BN       | 0.005528 | -0.0007568 | -0.003144  | -0.0002156 | 0.0005754           |
-* Pretrained model has very high error, which indicates that there is a mismatch in the dataset distribution.
+
 * LeakyReLU model has moderate performance. 
 * Tanh and ELU have comparable performance. Both of them seem to be better for a set of variables, but tanh has error in order of 1e-2 for m, which can be considered as high comparatively. 
 Hence ELU model can be said to be the best among these in terms of *mean relative reconstruction error*.
 
 #### Execution time and memory allocation comparison
 | Model         | Model initialization time (s) | Model load time (s) | Encoding time (s) | Decoding time (s) | Encoding memory alloc (MB) | Decoding memory alloc (MB) |
-|---------------|:-----------------------------:|---------------------|-------------------|-------------------|----------------------------|----------------------------|
-| Tanh, no NN   | 2.5174                        | 0.05932             | 0.03934           | 0.02113           | 0.0024                     | 0.1780                     |
-| LeakyReLU, BN | 2.5903                        | 0.08180             | 0.12613           | 0.10033           | 0.0076                     | 0.2240                     |
-| ELU, BN       | 2.4373                        | 0.07940             | 0.16376           | 0.15237           | 0.0064                     | 0.1945                     |
+|---------------|:-----------------------------:|---------------------|-------------------|-------------------|----------------------------|--------------------|
+| Tanh, no NN   | 2.5174                        | 0.05932             | 0.03934           | 0.02113           | 0.0024                     | 0.1780             |
+| LeakyReLU, BN | 2.5903                        | 0.08180             | 0.12613           | 0.10033           | 0.0076                     | 0.2240             |
+| ELU, BN       | 2.4373                        | 0.07940             | 0.16376           | 0.15237           | 0.0064                     | 0.1945             |
 
 * ELU has exponential component,  hence it’s runtime is expected to be higher
 * Tanh also has exponential component, but the batchnorm layer in other two models increases execution time.

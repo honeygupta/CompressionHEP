@@ -1,7 +1,7 @@
 '''
 Modified by Honey Gupta. The original scripts can be found at https://github.com/erwulff/lth_thesis_project and https://github.com/Skelpdar/HEPAutoencoders.
 
-Functions were modified or added for 4-momemtum data. The ones related to 27D AOD data were removed for easy readibility.
+Functions were modified or added for 4D data. The ones related to 27D AOD data were removed for easy readibility.
 '''
 
 import time
@@ -147,7 +147,7 @@ log_sub = 2
 centroidR_sub = 3
 area4vecm_sub = 0.15
 
-#     <--- Modified by Honey for 4-momentum data --->
+#     <--- Modified by Honey for 4D data --->
 def custom_normalization(train, test):
     train_cp = train.copy()
     test_cp = test.copy()
@@ -195,7 +195,7 @@ def custom_normalization(train, test):
     return train_cp, test_cp
 
 '''
-<--- Added by Honey for 4-momentum data --->
+<--- Added by Honey for 4D data --->
     Key:
     dim 0 = m
     dim 1 = pt
@@ -211,7 +211,7 @@ def custom_unnormalize_4m(normalized_data):
     return data
     
 
-#     <--- Modified by Honey for 4-momentum data --->
+#     <--- Modified by Honey for 4D data --->
 def custom_unnormalize(normalized_data):
     data = normalized_data.copy()
 
