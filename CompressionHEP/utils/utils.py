@@ -1,7 +1,7 @@
 '''
 Modified by Honey Gupta. The original scripts can be found at https://github.com/erwulff/lth_thesis_project and https://github.com/Skelpdar/HEPAutoencoders.
 
-Functions were modified or added for 4D data. The ones related to 27D AOD data were removed for easy readibility.
+Functions were modified or added for 4D data. The ones related to 27D AOD data were removed for better readibility.
 '''
 
 import time
@@ -265,4 +265,5 @@ def round_to_input(pred, uniques, variable):
     for ii in np.arange(new_arr.shape[0]):
         new_arr[ii] = uniques[ind[ii]]
     pred[variable] = new_arr
+
 
