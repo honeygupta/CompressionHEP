@@ -19,8 +19,7 @@ and [Eric Wulff](https://github.com/erwulff). Theoretical explanations and other
 The models were trained on a Nvidia RTX 2080Ti GPU and evaluated on CPU. The scripts, by default, run on a GPU and might need small modifications to run a CPU.
 
 ### Repository structure
-The repo contains jupyter notebooks for training, testing and plotting the results for different variants of the model.
-The file descriptions are as follows:
+The folder "CompressionHEP" contains jupyter notebooks for training, testing and plotting the results for different variants of the model and the folder "datasets" contains the input and processed datasets. The folder/file descriptions are as follows:
 
 * models - contains the models 
 * utils - contains helper scripts 
