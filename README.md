@@ -3,7 +3,7 @@ This repository contains the fastai(Pytorch) implementation for Deep-compression
 It also contains scripts to plot the errors and analyze the results. 
 
 The code is developed by [Honey Gupta](https://github.com/honeygupta) and is derived from the works of [Erik Wallin](https://github.com/Skelpdar) 
-and [Eric Wulff](https://github.com/erwulff). Theoretical explanations and other development details can be found in Eric Wulff's [thesis](https://lup.lub.lu.se/student-papers/search/publication/9004751).
+and [Eric Wulff](https://github.com/erwulff). Theoretical explanations and other details can be found in Eric Wulff's [thesis](https://lup.lub.lu.se/student-papers/search/publication/9004751).
  
 
 ## Getting Started
