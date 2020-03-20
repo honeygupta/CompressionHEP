@@ -75,8 +75,12 @@ The scripts Execution_time_calculation.ipynb and Memory_allocation_trace.ipynb c
 | Standard           | 0.001250  | 0.01578      | -0.01810  | 0.05978  | 0.01111             |
 | Custom             | 0.010748  | -0.0001039   | 0.0007383 | 0.002638 | 0.0007314           |
 
-  * We can observe high bias in the non-normalised model. p_t has very low error whereas \eta high very high reconstruction error.
-  * Standard normalization has ~1e-2 error for all the parameters, whereas custom normalization has better performance for most of the parameters as compared to all 3. 
+* High bias in the non-normalised model. pt has low error whereas eta very high reconstruction error.
+* Standard normalization has highest error for most of the parameters among the three models (based on the variance of the errors)
+* Custom normalization has better performance for most of the parameters as compared to the others (based on variance and MSE)
+
+Since custom norm data produced the lowest mean squared error on the test-set and is able to capture correlations among variables in a better way, I chose custom normalization for all further experiments.
+ 
  
  #### Model comparison
 | Model         |     m    | p_t        | \phi       | \eta       | MSE on the test-set |
@@ -85,9 +89,10 @@ The scripts Execution_time_calculation.ipynb and Memory_allocation_trace.ipynb c
 | LeakyReLU, BN | 0.004853 | -0.001126  | 0.008089   | -0.02475   | 0.0005750           |
 | ELU, BN       | 0.005528 | -0.0007568 | -0.003144  | -0.0002156 | 0.0005754           |
 
-* LeakyReLU model has moderate performance. 
-* Tanh and ELU have comparable performance. Both of them seem to be better for a set of variables, but tanh has error in order of 1e-2 for m, which can be considered as high comparatively. 
-Hence ELU model can be said to be the best among these in terms of *mean relative reconstruction error*.
+* LeakyReLU model has moderate performance (based on the variance of relative error and MSE on the test-set).
+* Tanh and ELU have comparable performance. Tanh has lower variance and mean for the relative error but ELU has lower MSE.
+Hence ELU  model can be said to be the better among by considering both the relative error and MSE, since there is not much difference between ReLU and ELU’s MSE for the test-set.
+
 
 #### Execution time and memory allocation comparison
 | Model         | Model initialization time (s) | Model load time (s) | Encoding time (s) | Decoding time (s) | Encoding memory alloc (MB) | Decoding memory alloc (MB) |
@@ -98,7 +103,7 @@ Hence ELU model can be said to be the best among these in terms of *mean relativ
 
 * ELU has exponential component,  hence it’s runtime is expected to be higher
 * Tanh also has exponential component, but the batchnorm layer in other two models increases execution time.
-* Overall, the base tanh model seems to be the best in terms of execution time and memory allocation. 
+Overall, the base tanh model seems to be the best in terms of execution time and memory allocation. 
 
 
 
